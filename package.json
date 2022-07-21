@@ -1,0 +1,26 @@
+{
+  "name": "photo-dump-project",
+  "version": "1.0.0",
+  "description": "photo app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sevdeorscelik/photo-dump-project.git"
+  },
+  "keywords": [
+    "photo",
+    "app"
+  ],
+  "author": "Sevde Örscelik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sevdeorscelik/photo-dump-project/issues"
+  },
+  "homepage": "https://github.com/sevdeorscelik/photo-dump-project#readme",
+  "devDependencies": {
+    "prettier": "2.7.1"
+  }
+}
