@@ -1,7 +1,15 @@
 import express from 'express'
+import dotenv from 'dotenv'
+import conn from './db.js'
+
+dotenv.config();
+
+
+//connection to the db
+conn()
 
 const app = express()
-const port = 4000
+const port = process.env.PORT
 
 
 //ejs template engine
@@ -19,5 +27,5 @@ app.get("/about", (req, res) => {
 })
 
 app.listen(port, () =>{
-    console.log(`Su portta calisiyor : ${port}`);
+    console.log(`App running on port: ${port}`);
 })
