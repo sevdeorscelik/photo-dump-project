@@ -4,7 +4,7 @@ const app = express()
 const port = 4000
 
 app.get("/", (req, res) => {
-    res.send('INDEX PAGE')
+    res.send('INDEX PAGE-3')
 })
 
 app.listen(port, () =>{
