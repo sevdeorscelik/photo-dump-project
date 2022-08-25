@@ -1,6 +1,7 @@
-import express from 'express'
+import express from "express"
 import dotenv from 'dotenv'
 import conn from './db.js'
+import pageRoute from './routes/pageRoute.js'
 
 dotenv.config();
 
@@ -18,13 +19,22 @@ app.set("view engine", "ejs")
 //static files middleware
 app.use(express.static('public'))
 
-app.get("/", (req, res) => {
-    res.render('index')
-})
+//routes
 
-app.get("/about", (req, res) => {
-    res.render('about')
-})
+app.use("/", pageRoute); //slashà istek geldiginde pageRoute'a git demek
+
+/*
+//artik buna gerek yok
+
+    app.get("/", (req, res) => {
+        res.render('index')
+    })
+
+    app.get("/about", (req, res) => {
+        res.render('about')
+    })
+
+*/
 
 app.listen(port, () =>{
     console.log(`App running on port: ${port}`);
