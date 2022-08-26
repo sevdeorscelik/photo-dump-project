@@ -2,6 +2,7 @@ import express from "express"
 import dotenv from 'dotenv'
 import conn from './db.js'
 import pageRoute from './routes/pageRoute.js'
+import photoRoute from "./routes/photoRoute.js"
 
 dotenv.config();
 
@@ -18,10 +19,12 @@ app.set("view engine", "ejs")
 
 //static files middleware
 app.use(express.static('public'))
+app.use(express.json()) //body'de gönderdimiz json formatindaki verilerin okunabilmesi icin
+
 
 //routes
-
 app.use("/", pageRoute); //slashà istek geldiginde pageRoute'a git demek
+app.use("/photos", photoRoute); 
 
 /*
 //artik buna gerek yok
