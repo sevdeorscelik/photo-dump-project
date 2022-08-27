@@ -25,11 +25,19 @@ const getAllPhotos = async (req, res) => {
     try {
 
         const photos = await Photo.find({})
+        /*
         res.status(200).json({
             succeded: true,
             photos
         })
+        //bu sekilde yazarsak sayfada json verilerini görüyoruz. o yüzden söyle yazmaliyiz:
+        */
 
+        res.status(200).render('photos', {
+            photos, 
+            link: "photos",
+        })
+        
     } catch (error) {
 
         res.status(500).json({
