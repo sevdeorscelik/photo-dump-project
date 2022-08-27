@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import conn from './db.js'
 import pageRoute from './routes/pageRoute.js'
 import photoRoute from "./routes/photoRoute.js"
+import userRoute from "./routes/userRoute.js"
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ app.use(express.json()) //body'de gönderdimiz json formatindaki verilerin okuna
 //routes
 app.use("/", pageRoute); //slashà istek geldiginde pageRoute'a git demek
 app.use("/photos", photoRoute); 
+app.use("/register", userRoute); 
 
 /*
 //artik buna gerek yok
