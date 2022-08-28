@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true })) //body'den gelen verilerin okunm
 //routes
 app.use("/", pageRoute); //slashà istek geldiginde pageRoute'a git demek
 app.use("/photos", photoRoute); 
-app.use("/register", userRoute); 
+app.use("/users", userRoute); 
 
 /*
 //artik buna gerek yok
