@@ -42,10 +42,15 @@ const loginUser = async (req, res) => {
 
     // sifrenin uyusup uyusmadigini kontrol edilir
         if (same) {
-            res.status(200).json({
-                user,
-                token: createToken(user._id),
+
+            const token = createToken(user._id)
+            res.cookie("jwt", token, {
+                httpOnly: true,
+                maxAge: 100*60*60*24, //1day
             })
+
+            res.redirect("/users/dashboard")
+
         } else {
             res.status(401).json({
                 succeded: false,
@@ -69,7 +74,16 @@ const createToken = (userId) => {
 };
 
 
+
+const getDashboardPage = (req, res) => {
+    res.render('dashboard', {
+        link: 'dashboard',
+    })
+}
+
+
 export {
     createUser,
-    loginUser
+    loginUser,
+    getDashboardPage
 }
