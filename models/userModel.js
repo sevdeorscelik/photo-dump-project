@@ -1,4 +1,5 @@
 import mongoose from "mongoose"
+import bcrypt from "bcrypt"
 
 const { Schema } = mongoose
 const userSchema = new Schema({
@@ -18,11 +19,20 @@ const userSchema = new Schema({
     },
 
 },
-{
-    timestamps: true,
-}
+    {
+        timestamps: true,
+    }
 );
 
-const User = mongoose.model("User", userSchema)
+userSchema.pre("save", function (next) {
+    const user = this;
+    bcrypt.hash(user.password, 10, (err, hash) => {  //hash methodu bcrypt'den geliyor
+        user.password = hash;
+        next()  //next: islem tamamlandiktan sonra bir sonraki isleme mgecmesi icin yazdik
+    })
+})
 
-export default User
+    const User = mongoose.model("User", userSchema)
+
+
+    export default User;
