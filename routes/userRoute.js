@@ -5,9 +5,9 @@ import { createUser } from '../controllers/userController.js'
 const router = express.Router()
 
 router
-    .route("/register")
+    .route('/register')
     .post(createUser)
 
 
-    
+
 export default router

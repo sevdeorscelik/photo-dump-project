@@ -19,9 +19,10 @@ const userSchema = new Schema({
 
 },
 {
-    timestamps: true
-})
+    timestamps: true,
+}
+);
 
-const User = mongoose.model("Photo", userSchema)
+const User = mongoose.model("User", userSchema)
 
-export default Photo
+export default User

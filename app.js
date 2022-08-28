@@ -21,7 +21,7 @@ app.set("view engine", "ejs")
 //static files middleware
 app.use(express.static('public'))
 app.use(express.json()) //body'de gönderdimiz json formatindaki verilerin okunabilmesi icin
-
+app.use(express.urlencoded({ extended: true })) //body'den gelen verilerin okunmasi icin bu middleware'i ekliyoruz..
 
 //routes
 app.use("/", pageRoute); //slashà istek geldiginde pageRoute'a git demek
