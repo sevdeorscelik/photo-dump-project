@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser'
 import pageRoute from './routes/pageRoute.js'
 import photoRoute from "./routes/photoRoute.js"
 import userRoute from "./routes/userRoute.js"
+import {checkUser} from "./middlewares/authMiddleware.js"
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: true })) //body'den gelen verilerin okunm
 app.use(cookieParser())
 
 //routes
+app.get("*", checkUser) //tüm get methodlarinda user'i (checkUser fonksionunu) check etmemiz lazim. 
 app.use("/", pageRoute); //slashà istek geldiginde pageRoute'a git demek
 app.use("/photos", photoRoute); 
 app.use("/users", userRoute); 

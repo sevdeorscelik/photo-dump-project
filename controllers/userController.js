@@ -25,7 +25,7 @@ const loginUser = async (req, res) => {
         } = req.body
 
         const user = await User.findOne({
-            username: username
+            username
         })
 
         let same = false
