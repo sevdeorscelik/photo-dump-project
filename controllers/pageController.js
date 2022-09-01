@@ -24,7 +24,18 @@ const getLoginPage = (req, res) => {
     })
 }
 
+const getLogout = (req, res) => {
+    res.cookie("jwt", "", {
+        maxAge: 1,
+    });
+    res.redirect('/login')
+}
+
+//logout islemi icin cookie'deki veriyi siliyoruz. ancak bunun icin remove methodu yok. ne yapiyoruz? token'i yeniliyoruz ama buna 1ms lik bir süre verecegiz ve bu sekilde token ucacak.
 
 
 
-export {getIndexPage, getAboutPage, getRegisterPage, getLoginPage}
+
+
+
+export {getIndexPage, getAboutPage, getRegisterPage, getLoginPage, getLogout}
