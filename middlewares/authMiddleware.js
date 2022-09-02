@@ -12,7 +12,7 @@ const checkUser = async (req, res, next) => {
                 next()
             } else {
                 const user =await User.findById(decodedToken.userId) //usercontrollerde creatToken fonksiyonune userId fonksiyonunu verdgimiz icin o sekilde cagirmmaiz lazim
-                res.locals.user = user;
+                res.locals.user = user; //login olan kullanici
                 next()
             }
         } )

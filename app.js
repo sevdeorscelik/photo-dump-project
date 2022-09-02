@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: true })) //body'den gelen verilerin okunm
 app.use(cookieParser())
 
 //routes
-app.get("*", checkUser) //tüm get methodlarinda user'i (checkUser fonksionunu) check etmemiz lazim. 
+app.use("*", checkUser) //tüm get/post methodlarinda user'i (checkUser fonksionunu) check etmemiz lazim. 
 app.use("/", pageRoute); //slashà istek geldiginde pageRoute'a git demek
 app.use("/photos", photoRoute); 
 app.use("/users", userRoute); 
