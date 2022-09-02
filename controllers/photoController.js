@@ -1,13 +1,31 @@
 import Photo from "../models/photoModel.js";
+import { v2 as cloudinary } from 'cloudinary';
+import fs from "fs" //node.js paketidir
+
 
 const createPhoto = async (req, res) => {
+
+    const result = await cloudinary.uploader.upload(
+        req.files.image.tempFilePath,
+        {
+            use_filename: true,
+            folder: 'photo_dump', //cloudinarydeki folder name ile ayni
+        }
+    )
+
+console.log('RESULT:::', result); //foto bilgileri
+
     try {
 
         await Photo.create({
             name: req.body.name,
             description: req.body.description,
             user: res.locals.user._id,
+            url: result.secure_url,
         })
+
+        fs.unlinkSync(req.files.image.tempFilePath); //foto yüklendikten sonra kaynak dosyamizda otomatik tmp klasörü olusuyor. bu isimize yaramaz. foto yüklenmeden hemen bunu kaldirmak icin bu yöntemi kullaniyoruz
+
         res.status(201).redirect("/users/dashboard") //yeni foto yükledikten sonra dashboarda yönlendirir
 
     } catch (error) {
@@ -34,17 +52,17 @@ const getAllPhotos = async (req, res) => {
         */
 
         res.status(200).render('photos', {
-            photos, 
+            photos,
             link: "photos",
         })
-        
+
     } catch (error) {
 
         res.status(500).json({
             succeded: false,
             error,
         });
-        
+
     }
 }
 
@@ -53,16 +71,16 @@ const getAllPhotos = async (req, res) => {
 
 const getAPhotos = async (req, res) => {
     try {
-        const photo = await Photo.findById({_id : req.params.id})
+        const photo = await (await Photo.findById({ _id: req.params.id })).populate("user")
         res.status(200).render('photo', {
-            photo, 
+            photo,
             link: "photos",
-        }) 
+        })
     } catch (error) {
         res.status(500).json({
             succeded: false,
             error,
-        }); 
+        });
     }
 }
 

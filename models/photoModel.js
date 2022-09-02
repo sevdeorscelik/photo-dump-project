@@ -19,6 +19,10 @@ const photoSchema = new Schema({
     user: { //photo modele user ekeldik, böylece yüklenen foto verilerinde onu yokleyen kullanicinin bilgileri de yer alacak
         type: Schema.Types.ObjectId,
         ref: "User"
+    },
+    url: {  //fotonun urlsini buraya ekliyoruz
+        type: String,
+        required: true,
     }
 })
 
