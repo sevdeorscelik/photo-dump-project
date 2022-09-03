@@ -1,6 +1,6 @@
 import express from "express"
-import { createUser, loginUser, getDashboardPage } from '../controllers/userController.js'
-import {authenticateToken} from '../middlewares/authMiddleware.js'
+import { createUser, loginUser, getDashboardPage, getAllUsers, getAUser } from '../controllers/userController.js'
+import { authenticateToken } from '../middlewares/authMiddleware.js'
 
 const router = express.Router()
 
@@ -15,6 +15,15 @@ router
 router
     .route('/dashboard')
     .get(authenticateToken, getDashboardPage)
+
+router
+    .route('/')
+    .get(getAllUsers);
+
+router
+    .route('/:id')
+    .get(getAUser);
+
 
 
 
