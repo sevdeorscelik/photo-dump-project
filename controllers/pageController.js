@@ -1,4 +1,3 @@
-
 const getIndexPage = (req, res) => {
     res.render('index', {
         link: 'index'
@@ -33,9 +32,23 @@ const getLogout = (req, res) => {
 
 //logout islemi icin cookie'deki veriyi siliyoruz. ancak bunun icin remove methodu yok. ne yapiyoruz? token'i yeniliyoruz ama buna 1ms lik bir süre verecegiz ve bu sekilde token ucacak.
 
+const getContactPage = (req, res) => {
+    res.render('contact', {
+        link: 'contact',
+    })
+}
 
 
 
 
 
-export {getIndexPage, getAboutPage, getRegisterPage, getLoginPage, getLogout}
+
+
+export {
+    getIndexPage,
+    getAboutPage,
+    getRegisterPage,
+    getLoginPage,
+    getLogout,
+    getContactPage,
+}
