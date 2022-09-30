@@ -23,23 +23,27 @@
 
 
                <!-- a user card -->
+
+               <% for(user of users){ %>
+
                <div class="col-md-4">
                   <div class="team_box text_align_center">
                      <div class="team_img">
                        <figure><img src="images/team3.jpg" alt="#"/></figure>
                      </div>
                      <div class="craig">
-                       <h3>PRATT</h3>
+                       <h3><%= user.username %></h3>
                        <span>PHOTOGRAPHER</span>
                        <ul class="social_icon ">
                           <li><a href="Javascript:void(0)"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                           <li><a href="Javascript:void(0)"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                          <li><a href="Javascript:void(0)"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                          <li><a href="/users/<%= user._id %>"><i class="fa fa-external-link-square" aria-hidden="true"></i></a></li>
                        </ul>
                      </div>
                   </div>
                </div>
 
+               <% } %>
 
             </div>
          </div>

@@ -18,11 +18,11 @@ router
 
 router
     .route('/')
-    .get(getAllUsers);
+    .get(authenticateToken, getAllUsers);
 
 router
     .route('/:id')
-    .get(getAUser);
+    .get(authenticateToken, getAUser);
 
 
 

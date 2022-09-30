@@ -19,7 +19,7 @@
                
                 <h3><%= photo.name %></h3>
                 <p><%= photo.description %></p>
-                <a class="read_more" href="about.html"> Photographer: <%= photo.user.username %></a>
+                <a class="read_more" href="/users/<%= photo.user._id %>"> Photographer: <%= photo.user.username %></a>
               </div>
             </div>
             <div class="col-md-6">
