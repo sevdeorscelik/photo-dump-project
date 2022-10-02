@@ -8,6 +8,7 @@ import userRoute from "./routes/userRoute.js"
 import {checkUser} from "./middlewares/authMiddleware.js";
 import fileUpload from 'express-fileupload'
 import { v2 as cloudinary} from 'cloudinary'
+import methodOverride from 'method-override';
 
 dotenv.config();
 
@@ -33,6 +34,11 @@ app.use(express.json()) //body'de gönderdimiz json formatindaki verilerin okuna
 app.use(express.urlencoded({ extended: true })) //body'den gelen verilerin okunmasi icin bu middleware'i ekliyoruz..
 app.use(cookieParser())
 app.use(fileUpload({useTempFiles: true})) //cloudinary yükledigim görseller icin gecici bir tmp dosyasi olustururuz
+app.use(
+    methodOverride('_method', {
+      methods: ['POST', 'GET'],
+    })
+  );
 
 
 
