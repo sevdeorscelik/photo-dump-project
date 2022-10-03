@@ -22,6 +22,7 @@ console.log('RESULT:::', result); //foto bilgileri
             description: req.body.description,
             user: res.locals.user._id,
             url: result.secure_url,
+            image_id: result.public_id,
         })
 
         fs.unlinkSync(req.files.image.tempFilePath); //foto yüklendikten sonra kaynak dosyamizda otomatik tmp klasörü olusuyor. bu isimize yaramaz. foto yüklenmeden hemen bunu kaldirmak icin bu yöntemi kullaniyoruz
@@ -68,7 +69,6 @@ const getAllPhotos = async (req, res) => {
 
 
 
-
 const getAPhotos = async (req, res) => {
     try {
         const photo = await (await Photo.findById({ _id: req.params.id })).populate("user")
@@ -84,4 +84,23 @@ const getAPhotos = async (req, res) => {
     }
 }
 
-export { createPhoto, getAllPhotos, getAPhotos }
+
+const deletePhoto = async (req, res) => {
+    try {
+        const photo = await Photo.findById(req.params.id)
+        const photoId = photo.image_id
+
+        await cloudinary.uploader.destroy(photoId)
+        await Photo.findOneAndRemove({ _id : req.params.id })
+        
+        res.status(200).redirect('/users/dashboard');
+
+    } catch (error) {
+        res.status(500).json({
+            succeded: false,
+            error,
+        });
+    }
+}
+
+export { createPhoto, getAllPhotos, getAPhotos, deletePhoto }

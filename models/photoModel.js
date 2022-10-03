@@ -23,6 +23,9 @@ const photoSchema = new Schema({
     url: {  //fotonun urlsini buraya ekliyoruz
         type: String,
         required: true,
+    },
+    image_id:{
+        type: String,
     }
 })
 
