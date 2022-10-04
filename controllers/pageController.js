@@ -1,6 +1,17 @@
-const getIndexPage = (req, res) => {
+import Photo from '../models/photoModel.js'
+import User from '../models/userModel.js'
+
+const getIndexPage = async (req, res) => {
+
+    const photos = await Photo.find().sort({uploadedAt: -1}).limit(3);
+    const numOfUser = await User.countDocuments({});
+    const numOfPhotos = await Photo.countDocuments({});
+
     res.render('index', {
-        link: 'index'
+        link: 'index',
+        photos,
+        numOfUser,
+        numOfPhotos
     })
 }
 
