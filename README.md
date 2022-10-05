@@ -21,8 +21,8 @@
 
 ## Models
 
-<img src="images/shot-1.png" height="400" /> 
-<img src="images/shot-2.png" height="400" /> 
+<img src="/images/shot-1.png" height="400" /> 
+<img src="/images/shot-2.png" height="400" /> 
 
 
 
