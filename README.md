@@ -1,7 +1,7 @@
 # PhotoDump Project
 
 ## Tools
-- Node.js, Express.js, MongoDB, Mongoose, EJS Template Engine
+- Node.js, Express.js, MongoDB, Mongoose, EJS Template Engine, HTML, Css
 
 ## Features
 
