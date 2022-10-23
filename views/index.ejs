@@ -103,7 +103,7 @@
             </div>
          </div>
          <div class="tz-gallery">
-            <div class="row">
+            <div class="row align-items-center" >
 
                <% for(photo of photos){ %>
                <div class="col-lg-4 col-md-6 ma_bottom30">
@@ -129,13 +129,16 @@
    <div class="team">
       <div class="container_with">
          <div class="row">
-
-            <div class="col-md-6">
+            <div class="col-md-6" >
                <div class="team_box text_align_center">
 
                   <div class="craig">
-                     <h3><%= numOfUser %></h3>
-                     <span>Users</span>
+                     <a href="/users" >
+
+                        <h3><%= numOfUser %></h3>
+                        <span>Users</span>
+
+                     </a>
 
                   </div>
                </div>
@@ -144,8 +147,11 @@
                <div class="team_box text_align_center">
 
                   <div class="craig">
+
+                     <a href="/photos">
                      <h3><%= numOfPhotos %></h3>
                      <span>Photos</span>
+                  </a>
 
                   </div>
                </div>
