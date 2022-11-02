@@ -15,7 +15,7 @@
 - **Neues Foto hinzufügen**: Der User kann über ein Formular Name, Description und neue Foto angeben. Diese Photo wird dann in einer Datenbank gespeichert.
 - **Fotos**: Es können Foto erstellt werden. Diese werden auf dem Server mit mongodb gespeichert. Der User kann eine Liste von Fotos (in Photos-Page) sehen. Er kann eine Detailansicht der Foto sehen wo mehr als nur der Name enthalten ist.
 
-### Optional Features - 1
+### Optional Features 
 
 
 - **Photo-Update**: Der User kann seine persönlichen Fotos ändern (Name & Description & Foto)
